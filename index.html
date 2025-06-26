@@ -325,7 +325,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>Добро пожаловать на борт катера "Печенюга"! Мы предлагаем незабываемые прогулки по величественной реке Волге в самом сердце Твери.</p>
-                    <p>Наш катер вмещает до 10 человек, что делает прогулку уютной и комфортной. Вы сможете насладиться прекрасными видами городской набережной, мостов и природных пейзажей, которые открываются с воды.</p>
+                    <p>Наш катер вмещает до 5 человек, что делает прогулку уютной и комфортной. Вы сможете насладиться прекрасными видами городской набережной, мостов и природных пейзажей, которые открываются с воды.</p>
                 </div>
                 <div class="about-image">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D0%B0_%D1%81_%D0%BB%D0%B5%D0%B2%D0%BE%D0%B3%D0%BE_%D0%B1%D0%B5%D1%80%D0%B5%D0%B3%D0%B0_%D0%92%D0%BE%D0%BB%D0%B3%D0%B8.JPG" alt="Вид на Волгу в Твери">
@@ -383,64 +383,14 @@
         </div>
     </section>
     
-    <section class="section booking" id="booking">
-        <div class="container">
-            <h2 class="section-title">Забронировать прогулку</h2>
-            <div class="booking-form">
-                <form id="bookingForm">
-                    <div class="form-group">
-                        <label for="name">Ваше имя</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Телефон</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="date">Дата прогулки</label>
-                        <input type="date" id="date" name="date" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="time">Время прогулки</label>
-                        <select id="time" name="time" required>
-                            <option value="">Выберите время</option>
-                            <option value="10:00">10:00</option>
-                            <option value="12:00">12:00</option>
-                            <option value="14:00">14:00</option>
-                            <option value="16:00">16:00</option>
-                            <option value="18:00">18:00</option>
-                            <option value="20:00">20:00 (закат)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="duration">Продолжительность</label>
-                        <select id="duration" name="duration" required>
-                            <option value="1">1 час - 2000 руб.</option>
-                            <option value="2">2 часа - 4000 руб.</option>
-                            <option value="3">3 часа - 5000 руб.</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Дополнительные пожелания</label>
-                        <textarea id="message" name="message" rows="3"></textarea>
-                    </div>
-                    <button type="submit" class="btn">Забронировать</button>
-                </form>
-            </div>
-        </div>
-    </section>
     
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Контакты</h3>
-                    <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</p>
-                    <p><i class="fas fa-envelope"></i> pechenyuga@volga-tver.ru</p>
+                    <p><i class="fas fa-phone"></i> +7 (905) 601-20-53</p>
+                    <p><i class="fas fa-envelope"></i> boryaevd@gmail.com</p>
                     <p><i class="fas fa-map-marker-alt"></i> г. Тверь, набережная реки Волги</p>
                 </div>
                 <div class="footer-section">
@@ -467,24 +417,7 @@
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Собираем данные формы
-            const formData = {
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                email: document.getElementById('email').value,
-                date: document.getElementById('date').value,
-                time: document.getElementById('time').value,
-                duration: document.getElementById('duration').value,
-                message: document.getElementById('message').value
-            };
-            
-            // В реальном приложении здесь был бы AJAX-запрос к серверу
-            // Для тестового режима просто показываем alert
-            alert(`Спасибо за бронирование, ${formData.name}!\n\nВаша прогулка запланирована на ${formData.date} в ${formData.time}.\nПродолжительность: ${formData.duration} час(а/ов).\n\nМы свяжемся с вами для подтверждения.`);
-            
-            // Очищаем форму
-            this.reset();
-        });
+           
         
         // Устанавливаем минимальную дату (сегодня)
         const today = new Date().toISOString().split('T')[0];
