@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогулки на катере по Волге в Твери | Катер "Печенюга"</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://upload.wikimedia.org/wikipedia/commons/b/bf/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D0%B0_%D1%81_%D0%BB%D0%B5%D0%B2%D0%BE%D0%B3%D0%BE_%D0%B1%D0%B5%D1%80%D0%B5%D0%B3%D0%B0_%D0%92%D0%BE%D0%BB%D0%B3%D0%B8.JPG');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .header-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: #ff6b6b;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+    border: 2px solid #ff6b6b;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: #ff5252;
+    border-color: #ff5252;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 480px) {
+    .header-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-primary {
+        width: 100%;
+        text-align: center;
+    }
+}
+        header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        header p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: #2c3e50;
+        }
+        
+        .about {
+            background-color: #f9f9f9;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .captain-section, .boat-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin: 50px 0;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .captain-info, .boat-info {
+            flex: 1;
+        }
+        
+        .captain-image, .boat-image {
+            flex: 1;
+            min-height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .captain-image img, .boat-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .feature i {
+            font-size: 40px;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+        
+        .feature h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .booking {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://upload.wikimedia.org/wikipedia/commons/b/bf/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D0%B0_%D1%81_%D0%BB%D0%B5%D0%B2%D0%BE%D0%B3%D0%BE_%D0%B1%D0%B5%D1%80%D0%B5%D0%B3%D0%B0_%D0%92%D0%BE%D0%BB%D0%B3%D0%B8.JPG');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .about-content, .captain-section, .boat-section {
+                flex-direction: column;
+            }
+            
+            .captain-image, .boat-image {
+                width: 100%;
+                min-height: 300px;
+            }
+            
+            header h1 {
+                font-size: 36px;
+            }
+            
+            header p {
+                font-size: 18px;
+            }
+            .gallery-btn {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid white;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+        
+        .gallery-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+    <div class="container">
+        <h1>Прогулки на катере по Волге в Твери</h1>
+        <p>Насладитесь живописными видами Волги на комфортабельном катере "Печенюга" под управлением опытного капитана Боряева Дмитрия</p>
+        <div class="header-buttons">
+            <a href="#booking" class="btn btn-primary">Забронировать прогулку</a>
+            <a href="gallery.html" class="btn btn-primary">Фотогалерея</a>
+        </div>
+    </div>
+</header>
+    
+    <section class="section about">
+        <div class="container">
+            <h2 class="section-title">О наших прогулках</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Добро пожаловать на борт катера "Печенюга"! Мы предлагаем незабываемые прогулки по величественной реке Волге в самом сердце Твери.</p>
+                    <p>Наш катер вмещает до 10 человек, что делает прогулку уютной и комфортной. Вы сможете насладиться прекрасными видами городской набережной, мостов и природных пейзажей, которые открываются с воды.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D0%B0_%D1%81_%D0%BB%D0%B5%D0%B2%D0%BE%D0%B3%D0%BE_%D0%B1%D0%B5%D1%80%D0%B5%D0%B3%D0%B0_%D0%92%D0%BE%D0%BB%D0%B3%D0%B8.JPG" alt="Вид на Волгу в Твери">
+                </div>
+            </div>
+            
+            <div class="captain-section">
+                <div class="captain-image">
+                    <img src="https://lh3.googleusercontent.com/d/1BJzOk1IAZqylrgSOiN1A7h7jkfA01yF6=w1000" alt="Капитан Боряев Дмитрий"> 
+                </div>
+                <div class="captain-info">
+                    <h3>Капитан Боряев Дмитрий</h3>
+                    <p>Профессиональный капитан с более чем 15-летним опытом работы на Волге. Окончил Тверской речной техникум, имеет все необходимые лицензии и сертификаты.</p>
+                    <p>Дмитрий не только обеспечит вашу безопасность во время прогулки, но и с удовольствием расскажет об истории города, интересных местах вдоль берегов Волги и особенностях судоходства.</p>
+                    <p>"Для меня каждая прогулка - это возможность показать гостям красоту нашей реки и родного города с необычного ракурса" - говорит капитан.</p>
+                </div>
+            </div>
+            
+            <div class="boat-section">
+                <div class="boat-image">
+                    <img src="https://lh3.googleusercontent.com/d/17GyVUjd3JMSfJt1sf62SZYCHICqkAh83=w1000" alt="Катер Печенюга">
+                </div>
+                <div class="boat-info">
+                    <h3>Катер "Печенюга"</h3>
+                    <p>Наш катер был построен в 1982 году и полностью соответствует всем требованиям безопасности. Длина судна - 5 метров, ширина - 1.7 метра.</p>
+                    <p>Особенности катера:</p>
+                    <ul>
+                        <li>Удобные мягкие сиденья с регулируемыми спинками</li>
+                        <li>Тент от солнца и дождя</li>
+                        <li>Спасательные жилеты для всех пассажиров</li>
+                        <li>Аптечка первой помощи</li>
+                        <li>Холодильник для напитков</li>
+                        <li>Музыкальная система с Bluetooth</li>
+                    </ul>
+                    <p>Максимальная вместимость - 5 человек. Идеально подходит для семейных прогулок, романтических свиданий и небольших компаний.</p>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-anchor"></i>
+                    <h3>Безопасность</h3>
+                    <p>Все необходимое спасательное оборудование, регулярный техосмотр катера, опытный капитан.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-umbrella-beach"></i>
+                    <h3>Комфорт</h3>
+                    <p>Удобные сиденья, тент от солнца, возможность взять напитки и легкие закуски.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-camera"></i>
+                    <h3>Фотостопы</h3>
+                    <p>Остановки у самых живописных мест для фотосессии.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section booking" id="booking">
+        <div class="container">
+            <h2 class="section-title">Забронировать прогулку</h2>
+            <div class="booking-form">
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Дата прогулки</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Время прогулки</label>
+                        <select id="time" name="time" required>
+                            <option value="">Выберите время</option>
+                            <option value="10:00">10:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="18:00">18:00</option>
+                            <option value="20:00">20:00 (закат)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Продолжительность</label>
+                        <select id="duration" name="duration" required>
+                            <option value="1">1 час - 2000 руб.</option>
+                            <option value="2">2 часа - 4000 руб.</option>
+                            <option value="3">3 часа - 5000 руб.</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Дополнительные пожелания</label>
+                        <textarea id="message" name="message" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Забронировать</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</p>
+                    <p><i class="fas fa-envelope"></i> pechenyuga@volga-tver.ru</p>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Тверь, набережная реки Волги</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Часы работы</h3>
+                    <p>Ежедневно с 10:00 до 22:00</p>
+                    <p>Сезон: май - октябрь</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Прогулки на катере "Печенюга" по Волге в Твери. Капитан Боряев Дмитрий.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Собираем данные формы
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                duration: document.getElementById('duration').value,
+                message: document.getElementById('message').value
+            };
+            
+            // В реальном приложении здесь был бы AJAX-запрос к серверу
+            // Для тестового режима просто показываем alert
+            alert(`Спасибо за бронирование, ${formData.name}!\n\nВаша прогулка запланирована на ${formData.date} в ${formData.time}.\nПродолжительность: ${formData.duration} час(а/ов).\n\nМы свяжемся с вами для подтверждения.`);
+            
+            // Очищаем форму
+            this.reset();
+        });
+        
+        // Устанавливаем минимальную дату (сегодня)
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').min = today;
+
+        // Резервная загрузка изображения катера
+        document.addEventListener('DOMContentLoaded', function() {
+            const boatImg = document.querySelector('.boat-image img');
+            boatImg.onerror = function() {
+                this.src = 'https://images.unsplash.com/photo-1518544864413-8dfb18c9a6a7';
+            };
+        });
+    </script>
+</body>
+</html>
