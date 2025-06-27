@@ -15,7 +15,7 @@
         body {
             color: #333;
             line-height: 1.6;
-            background-color: #e0e4e9; /* Нежно-голубой фон */
+            background-color: #e0e4e9;
         }
         
         .container {
@@ -32,6 +32,7 @@
             padding: 100px 0;
             text-align: center;
         }
+        
         .header-buttons {
             display: flex;
             gap: 20px;
@@ -41,11 +42,29 @@
         }
 
         .booking-phone {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
             color: rgb(246, 247, 250);
             font-size: 20px;
             margin-top: 20px;
             font-weight: bold;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .social-icon {
+            color: white;
+            font-size: 24px;
+            transition: all 0.3s;
+        }
+
+        .social-icon.whatsapp:hover {
+            color: #25D366;
+        }
+
+        .social-icon.telegram:hover {
+            color: #0088cc;
         }
 
         .btn-primary {
@@ -80,9 +99,12 @@
             }
 
             .booking-phone {
+                flex-direction: column;
+                gap: 10px;
                 font-size: 18px;
             }
         }
+        
         header h1 {
             font-size: 48px;
             margin-bottom: 20px;
@@ -328,17 +350,32 @@
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Инициализация EmailJS
+        (function() {
+            emailjs.init('YOUR_USER_ID');
+        })();
+    </script>
 </head>
 <body>
     <header>
     <div class="container">
         <h1>Прогулки на катере по Волге в Твери</h1>
-        <p>Насладитесь живописными видами Волги на комфортабельном катере "Печенюга" под управлением опытного капитана Боряева Дмитрия</p>
+        <p>Насладитесь живописными видами Волги на комфортабельном катере "Печенюга" под управлением опытного капитана Дмитрия</p>
         <div class="header-buttons">
             <a href="#booking" class="btn btn-primary">Забронировать прогулку</a>
             <a href="gallery.html" class="btn btn-primary">Фотогалерея</a>
         </div>
-        <div class="booking-phone">+7 905 601-20-53 - Телефон для бронирования</div>
+        <div class="booking-phone">
+            +7 905 601-20-53 Телефон для бронирования
+            <a href="https://wa.me/79056012053" target="_blank" class="social-icon whatsapp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://t.me/+79056012053" target="_blank" class="social-icon telegram">
+                <i class="fab fa-telegram-plane"></i>
+            </a>
+        </div>
     </div>
 </header>
     
@@ -412,11 +449,7 @@
         <div class="container">
             <h2 class="section-title">Забронировать прогулку</h2>
             <div class="booking-form">
-                <form id="bookingForm" action="https://formsubmit.co/boryaevd@gmail.com" method="POST">
-                    <input type="hidden" name="_subject" value="Новая заявка на прогулку на катере">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
-                    
+                <form id="bookingForm">
                     <div class="form-group">
                         <label for="name">Ваше имя</label>
                         <input type="text" id="name" name="name" required>
@@ -427,7 +460,7 @@
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email">
                     </div>
                     <div class="form-group">
                         <label for="date">Дата прогулки</label>
@@ -456,7 +489,7 @@
                             <option value="5">5</option>
                         </select>
                     </div>
-                   
+                  
                     <div class="form-group">
                         <label for="message">Дополнительные пожелания</label>
                         <textarea id="message" name="message" rows="3"></textarea>
@@ -491,7 +524,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Прогулки на катере "Печенюга" по Волге в Твери. Капитан Боряев Дмитрий.</p>
+                <p>&copy; 2025 Прогулки на катере "Печенюга" по Волге в Твери. Капитан Дмитрий.</p>
             </div>
         </div>
     </footer>
@@ -500,7 +533,6 @@
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Собираем данные формы
             const formData = {
                 name: document.getElementById('name').value,
                 phone: document.getElementById('phone').value,
@@ -512,21 +544,19 @@
                 message: document.getElementById('message').value
             };
             
-            // Показываем сообщение пользователю
-            alert(`Спасибо за бронирование, ${formData.name}!\n\nВаша прогулка запланирована на ${formData.date} в ${formData.time}.\nКоличество человек: ${formData.people}.\nПродолжительность: ${formData.duration}.\n\nМы свяжемся с вами для подтверждения.`);
+            const subject = `Бронирование прогулки на ${formData.date} в ${formData.time}`;
+            const body = `Имя: ${formData.name}%0D%0AТелефон: ${formData.phone}%0D%0AEmail: ${formData.email}%0D%0AДата: ${formData.date}%0D%0AВремя: ${formData.time}%0D%0AКоличество человек: ${formData.people}%0D%0AПродолжительность: ${formData.duration}%0D%0AДополнительные пожелания: ${formData.message}`;
             
-            // Отправляем форму
-            this.submit();
+            window.location.href = `mailto:boryaevd@gmail.com?subject=${subject}&body=${body}`;
             
-            // Очищаем форму
+            alert(`Спасибо за бронирование, ${formData.name}!\n\nВаша прогулка запланирована на ${formData.date} в ${formData.time}.\nКоличество человек: ${formData.people}.\nПродолжительность: ${formData.duration}.\n\nОткроется почтовый клиент для подтверждения.`);
+            
             this.reset();
         });
         
-        // Устанавливаем минимальную дату (сегодня)
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('date').min = today;
 
-        // Резервная загрузка изображения катера
         document.addEventListener('DOMContentLoaded', function() {
             const boatImg = document.querySelector('.boat-image img');
             boatImg.onerror = function() {
