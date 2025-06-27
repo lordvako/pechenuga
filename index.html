@@ -353,9 +353,18 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         // Инициализация EmailJS
-        (function() {
-            emailjs.init('YOUR_USER_ID');
-        })();
+        emailjs.init('P5nZtVW56DgQo8n6A'); // Ваш Public Key из Integration
+
+emailjs.send('P5nZtVW56DgQo8n6A', 'https://dashboard.emailjs.com/admin/templates/jp5ubs8,' {
+    name: formData.name,
+    phone: formData.phone,
+    Email: formData.email,
+date: formData.date,
+time: formData.time,
+people: formData.people,
+message: formData.message.
+    // ... остальные поля
+});
     </script>
 </head>
 <body>
