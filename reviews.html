@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы о прогулках на катере "Печенюга" | Тверь</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #e0e4e9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://upload.wikimedia.org/wikipedia/commons/b/bf/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D0%B0_%D1%81_%D0%BB%D0%B5%D0%B2%D0%BE%D0%B3%D0%BE_%D0%B1%D0%B5%D1%80%D0%B5%D0%B3%D0%B0_%D0%92%D0%BE%D0%BB%D0%B3%D0%B8.JPG');
+            background-size: cover;
+            background-position: center;
+            color: rgb(243, 245, 248);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .header-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: #ff6b6b;
+            color: rgb(245, 246, 248);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid #ff6b6b;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #ff5252;
+            border-color: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 480px) {
+            .header-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        header p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: #2c3e50;
+        }
+        
+        .reviews-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .add-review-btn {
+            display: block;
+            margin: 0 auto 40px;
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .add-review-btn:hover {
+            background: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: black;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+        
+        .rating input {
+            display: none;
+        }
+        
+        .rating label {
+            font-size: 24px;
+            color: #ccc;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        
+        .rating input:checked ~ label {
+            color: #ffc107;
+        }
+        
+        .rating label:hover,
+        .rating label:hover ~ label {
+            color: #ffc107;
+        }
+        
+        .submit-review {
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        
+        .submit-review:hover {
+            background: #ff5252;
+        }
+        
+        .reviews-list {
+            margin-top: 50px;
+        }
+        
+        .review {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        
+        .review-author {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .review-date {
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .review-rating {
+            color: #ffc107;
+            margin: 5px 0;
+        }
+        
+        .review-text {
+            line-height: 1.6;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 36px;
+            }
+            
+            header p {
+                font-size: 18px;
+            }
+            
+            .modal-content {
+                margin: 20% auto;
+                width: 95%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Отзывы о прогулках на катере "Печенюга"</h1>
+            <p>Что говорят наши гости о своих впечатлениях от прогулок по Волге</p>
+            <div class="header-buttons">
+                <a href="index.html" class="btn-primary">На главную</a>
+                <a href="gallery.html" class="btn-primary">Фотогалерея</a>
+            </div>
+        </div>
+    </header>
+    
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Ваши отзывы</h2>
+            <div class="reviews-container">
+                <button id="openModal" class="add-review-btn">Оставить отзыв</button>
+                
+                <div id="reviewModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Оставить отзыв</h2>
+                        <form id="reviewForm">
+                            <div class="form-group">
+                                <label for="reviewName">Ваше имя</label>
+                                <input type="text" id="reviewName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reviewLastName">Ваша фамилия</label>
+                                <input type="text" id="reviewLastName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reviewDate">Дата прогулки</label>
+                                <input type="date" id="reviewDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Оценка</label>
+                                <div class="rating">
+                                    <input type="radio" id="star5" name="rating" value="5">
+                                    <label for="star5">★</label>
+                                    <input type="radio" id="star4" name="rating" value="4">
+                                    <label for="star4">★</label>
+                                    <input type="radio" id="star3" name="rating" value="3">
+                                    <label for="star3">★</label>
+                                    <input type="radio" id="star2" name="rating" value="2">
+                                    <label for="star2">★</label>
+                                    <input type="radio" id="star1" name="rating" value="1" required>
+                                    <label for="star1">★</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="reviewText">Ваш отзыв</label>
+                                <textarea id="reviewText" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-review">Опубликовать отзыв</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="reviews-list" id="reviewsList">
+                    <!-- Отзывы будут добавляться сюда -->
+                    <div class="review">
+                        <div class="review-header">
+                            <span class="review-author">Иван Иванов</span>
+                            <span class="review-date">15.06.2025</span>
+                        </div>
+                        <div class="review-rating">★★★★★</div>
+                        <div class="review-text">
+                            Отличная прогулка! Капитан Дмитрий - настоящий профессионал, показал нам самые красивые места на Волге. 
+                            Катер уютный и комфортный. Обязательно вернемся снова!
+                        </div>
+                    </div>
+                    
+                    <div class="review">
+                        <div class="review-header">
+                            <span class="review-author">Елена Петрова</span>
+                            <span class="review-date">10.06.2025</span>
+                        </div>
+                        <div class="review-rating">★★★★☆</div>
+                        <div class="review-text">
+                            Прекрасно провели время всей семьей. Дети в восторге от прогулки. Единственное - хотелось бы чуть больше времени на остановках для фото.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-phone"></i> +7 905 601-20-53</p>
+                    <p><i class="fas fa-envelope"></i> pechenyuga@volga-tver.ru</p>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Тверь, набережная реки Волги</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Часы работы</h3>
+                    <p>Ежедневно с 10:00 до 22:00</p>
+                    <p>Сезон: май - октябрь</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Прогулки на катере "Печенюга" по Волге в Твери. Капитан Дмитрий.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Открытие модального окна
+        document.getElementById('openModal').addEventListener('click', function() {
+            document.getElementById('reviewModal').style.display = 'block';
+        });
+        
+        // Закрытие модального окна
+        document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('reviewModal').style.display = 'none';
+        });
+        
+        // Закрытие модального окна при клике вне его
+        window.addEventListener('click', function(event) {
+            if (event.target == document.getElementById('reviewModal')) {
+                document.getElementById('reviewModal').style.display = 'none';
+            }
+        });
+        
+        // Обработка формы отзыва
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Получаем данные из формы
+            const name = document.getElementById('reviewName').value;
+            const lastName = document.getElementById('reviewLastName').value;
+            const date = document.getElementById('reviewDate').value;
+            const rating = document.querySelector('input[name="rating"]:checked').value;
+            const text = document.getElementById('reviewText').value;
+            
+            // Форматируем дату
+            const formattedDate = formatDate(date);
+            
+            // Создаем HTML для нового отзыва
+            const reviewHTML = `
+                <div class="review">
+                    <div class="review-header">
+                        <span class="review-author">${name} ${lastName}</span>
+                        <span class="review-date">${formattedDate}</span>
+                    </div>
+                    <div class="review-rating">${getStars(rating)}</div>
+                    <div class="review-text">${text}</div>
+                </div>
+            `;
+            
+            // Добавляем отзыв в начало списка
+            document.getElementById('reviewsList').insertAdjacentHTML('afterbegin', reviewHTML);
+            
+            // Закрываем модальное окно и очищаем форму
+            document.getElementById('reviewModal').style.display = 'none';
+            this.reset();
+            
+            // Показываем сообщение об успехе
+            alert('Спасибо за ваш отзыв! Он был успешно опубликован.');
+        });
+        
+        // Функция для форматирования даты
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const day = date.getDate().toString().padStart(2, '0');
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const year = date.getFullYear();
+            return `${day}.${month}.${year}`;
+        }
+        
+        // Функция для создания звезд рейтинга
+        function getStars(rating) {
+            const fullStars = '★'.repeat(rating);
+            const emptyStars = '☆'.repeat(5 - rating);
+            return fullStars + emptyStars;
+        }
+        
+        // Устанавливаем минимальную дату (сегодня)
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('reviewDate').max = today;
+    </script>
+</body>
+</html>
