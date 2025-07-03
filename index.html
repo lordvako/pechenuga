@@ -3,22 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();
-   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-   ym(103154746, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true
-   });
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/103154746" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
     <title>Прогулки на катере по Волге в Твери | Катер "Печенюга"</title>
     <style>
         * {
@@ -67,6 +51,24 @@
             margin-top: 20px;
             font-weight: bold;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .price-banner {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 12px 20px;
+            margin-top: 15px;
+            font-size: 18px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
         }
 
         .social-icon {
@@ -118,6 +120,11 @@
                 flex-direction: column;
                 gap: 10px;
                 font-size: 18px;
+            }
+
+            .price-banner {
+                font-size: 16px;
+                padding: 10px 15px;
             }
         }
         
@@ -317,27 +324,10 @@
             font-size: 20px;
         }
         
-        .footer-section a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 10px;
-            transition: color 0.3s;
-        }
-        
-        .footer-section a:hover {
-            color: #ff6b6b;
-        }
-        
         .social-icons a {
             color: white;
             font-size: 20px;
             margin-right: 15px;
-            transition: color 0.3s;
-        }
-        
-        .social-icons a:hover {
-            color: #ff6b6b;
         }
         
         .copyright {
@@ -392,7 +382,6 @@
         <div class="header-buttons">
             <a href="#booking" class="btn btn-primary">Забронировать прогулку</a>
             <a href="gallery.html" class="btn btn-primary">Фотогалерея</a>
-            <a href="reviews.html" class="btn btn-primary">Отзывы</a>
         </div>
         <div class="booking-phone">
             +7 905 601-20-53 Телефон для бронирования
@@ -402,6 +391,9 @@
             <a href="https://t.me/+79056012053" target="_blank" class="social-icon telegram">
                 <i class="fab fa-telegram-plane"></i>
             </a>
+        </div>
+        <div class="price-banner">
+            Прогулка от 30 мин - 2000 руб.
         </div>
     </div>
 </header>
@@ -539,12 +531,6 @@
                     <h3>Часы работы</h3>
                     <p>Ежедневно с 10:00 до 22:00</p>
                     <p>Сезон: май - октябрь</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Страницы</h3>
-                    <a href="index.html">Главная</a>
-                    <a href="gallery.html">Фотогалерея</a>
-                    <a href="reviews.html">Отзывы</a>
                 </div>
                 <div class="footer-section">
                     <h3>Мы в соцсетях</h3>
