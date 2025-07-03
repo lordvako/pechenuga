@@ -106,30 +106,13 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .gallery-btn {
-            display: inline-block;
-            background: transparent;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s;
-            border: 2px solid white;
-            cursor: pointer;
-        }
-        
-        .gallery-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
         @media (max-width: 480px) {
             .header-buttons {
                 flex-direction: column;
                 align-items: center;
             }
             
-            .btn-primary, .gallery-btn {
+            .btn-primary {
                 width: 100%;
                 text-align: center;
             }
@@ -383,7 +366,7 @@
         <div class="header-buttons">
             <a href="#booking" class="btn btn-primary">Забронировать прогулку</a>
             <a href="gallery.html" class="btn btn-primary">Фотогалерея</a>
-            <a href="#reviews" class="gallery-btn">Отзывы</a>
+            <a href="reviews.html" class="btn btn-primary">Отзывы</a>
         </div>
         <div class="booking-phone">
             +7 905 601-20-53 Телефон для бронирования
@@ -461,15 +444,6 @@
                         <p>Остановки у самых живописных мест для фотосессии.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="reviews" class="section" style="background-color: #f8f9fa;">
-        <div class="container">
-            <h2 class="section-title">Отзывы наших гостей</h2>
-            <div style="text-align: center; margin-bottom: 30px;">
-                <p>Здесь будут отзывы клиентов</p>
             </div>
         </div>
     </section>
