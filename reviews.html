@@ -367,28 +367,7 @@
                 </div>
                 
                 <div class="reviews-list" id="reviewsList">
-                    <!-- Отзывы будут добавляться сюда -->
-                    <div class="review">
-                        <div class="review-header">
-                            <span class="review-author">Иван Иванов</span>
-                            <span class="review-date">15.06.2025</span>
-                        </div>
-                        <div class="review-rating">★★★★★</div>
-                        <div class="review-text">
-                            Отличная прогулка! Капитан Дмитрий - настоящий профессионал, показал нам самые красивые места на Волге. 
-                            Катер уютный и комфортный. Обязательно вернемся снова!
-                        </div>
-                    </div>
-                    
-                    <div class="review">
-                        <div class="review-header">
-                            <span class="review-author">Елена Петрова</span>
-                            <span class="review-date">10.06.2025</span>
-                        </div>
-                        <div class="review-rating">★★★★☆</div>
-                        <div class="review-text">
-                            Прекрасно провели время всей семьей. Дети в восторге от прогулки.
-                    </div>
+                    <!-- Отзывы будут добавляться сюда динамически -->
                 </div>
             </div>
         </div>
@@ -424,60 +403,6 @@
     </footer>
     
     <script>
-        // Открытие модального окна
-        document.getElementById('openModal').addEventListener('click', function() {
-            document.getElementById('reviewModal').style.display = 'block';
-        });
-        
-        // Закрытие модального окна
-        document.querySelector('.close').addEventListener('click', function() {
-            document.getElementById('reviewModal').style.display = 'none';
-        });
-        
-        // Закрытие модального окна при клике вне его
-        window.addEventListener('click', function(event) {
-            if (event.target == document.getElementById('reviewModal')) {
-                document.getElementById('reviewModal').style.display = 'none';
-            }
-        });
-        
-        // Обработка формы отзыва
-        document.getElementById('reviewForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Получаем данные из формы
-            const name = document.getElementById('reviewName').value;
-            const lastName = document.getElementById('reviewLastName').value;
-            const date = document.getElementById('reviewDate').value;
-            const rating = document.querySelector('input[name="rating"]:checked').value;
-            const text = document.getElementById('reviewText').value;
-            
-            // Форматируем дату
-            const formattedDate = formatDate(date);
-            
-            // Создаем HTML для нового отзыва
-            const reviewHTML = `
-                <div class="review">
-                    <div class="review-header">
-                        <span class="review-author">${name} ${lastName}</span>
-                        <span class="review-date">${formattedDate}</span>
-                    </div>
-                    <div class="review-rating">${getStars(rating)}</div>
-                    <div class="review-text">${text}</div>
-                </div>
-            `;
-            
-            // Добавляем отзыв в начало списка
-            document.getElementById('reviewsList').insertAdjacentHTML('afterbegin', reviewHTML);
-            
-            // Закрываем модальное окно и очищаем форму
-            document.getElementById('reviewModal').style.display = 'none';
-            this.reset();
-            
-            // Показываем сообщение об успехе
-            alert('Спасибо за ваш отзыв! Он был успешно опубликован.');
-        });
-        
         // Функция для форматирования даты
         function formatDate(dateString) {
             const date = new Date(dateString);
@@ -494,9 +419,125 @@
             return fullStars + emptyStars;
         }
         
-        // Устанавливаем минимальную дату (сегодня)
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('reviewDate').max = today;
+        // Функция для загрузки и отображения отзывов
+        function loadReviews() {
+            const reviewsList = document.getElementById('reviewsList');
+            reviewsList.innerHTML = '';
+            
+            // Получаем отзывы из localStorage
+            const savedReviews = JSON.parse(localStorage.getItem('boatReviews')) || [];
+            
+            // Добавляем демо-отзывы, если нет сохраненных
+            if (savedReviews.length === 0) {
+                const demoReviews = [
+                    {
+                        name: "Иван",
+                        lastName: "Иванов",
+                        date: "15.06.2025",
+                        rating: 5,
+                        text: "Отличная прогулка! Капитан Дмитрий - настоящий профессионал, показал нам самые красивые места на Волге. Катер уютный и комфортный. Обязательно вернемся снова!"
+                    },
+                    {
+                        name: "Елена",
+                        lastName: "Петрова",
+                        date: "10.06.2025",
+                        rating: 4,
+                        text: "Прекрасно провели время всей семьей. Дети в восторге от прогулки."
+                    }
+                ];
+                
+                localStorage.setItem('boatReviews', JSON.stringify(demoReviews));
+                demoReviews.forEach(addReviewToDOM);
+            } else {
+                savedReviews.forEach(addReviewToDOM);
+            }
+        }
+        
+        // Функция для добавления отзыва в DOM
+        function addReviewToDOM(review) {
+            const reviewsList = document.getElementById('reviewsList');
+            
+            const reviewHTML = `
+                <div class="review">
+                    <div class="review-header">
+                        <span class="review-author">${review.name} ${review.lastName}</span>
+                        <span class="review-date">${review.date}</span>
+                    </div>
+                    <div class="review-rating">${getStars(review.rating)}</div>
+                    <div class="review-text">${review.text}</div>
+                </div>
+            `;
+            
+            reviewsList.insertAdjacentHTML('beforeend', reviewHTML);
+        }
+        
+        // Функция для сохранения нового отзыва
+        function saveNewReview(review) {
+            const savedReviews = JSON.parse(localStorage.getItem('boatReviews')) || [];
+            savedReviews.unshift(review);
+            localStorage.setItem('boatReviews', JSON.stringify(savedReviews));
+        }
+        
+        // Инициализация страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            // Загружаем отзывы при загрузке страницы
+            loadReviews();
+            
+            // Устанавливаем максимальную дату (сегодня)
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('reviewDate').max = today;
+            
+            // Открытие модального окна
+            document.getElementById('openModal').addEventListener('click', function() {
+                document.getElementById('reviewModal').style.display = 'block';
+            });
+            
+            // Закрытие модального окна
+            document.querySelector('.close').addEventListener('click', function() {
+                document.getElementById('reviewModal').style.display = 'none';
+            });
+            
+            // Закрытие модального окна при клике вне его
+            window.addEventListener('click', function(event) {
+                if (event.target == document.getElementById('reviewModal')) {
+                    document.getElementById('reviewModal').style.display = 'none';
+                }
+            });
+            
+            // Обработка формы отзыва
+            document.getElementById('reviewForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Получаем данные из формы
+                const name = document.getElementById('reviewName').value;
+                const lastName = document.getElementById('reviewLastName').value;
+                const date = document.getElementById('reviewDate').value;
+                const rating = document.querySelector('input[name="rating"]:checked').value;
+                const text = document.getElementById('reviewText').value;
+                
+                // Создаем объект отзыва
+                const newReview = {
+                    name: name,
+                    lastName: lastName,
+                    date: formatDate(date),
+                    rating: parseInt(rating),
+                    text: text
+                };
+                
+                // Сохраняем отзыв
+                saveNewReview(newReview);
+                
+                // Добавляем отзыв на страницу
+                addReviewToDOM(newReview);
+                
+                // Закрываем модальное окно и очищаем форму
+                document.getElementById('reviewModal').style.display = 'none';
+                this.reset();
+                
+                // Показываем сообщение об успехе
+                alert('Спасибо за ваш отзыв! Он был успешно опубликован.');
+            });
+        });
     </script>
 </body>
 </html>
