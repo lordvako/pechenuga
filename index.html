@@ -336,6 +336,43 @@
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
+
+        /* Новые стили для подписи разработчика */
+        .developer-credits {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+        
+        .developer-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #ff6b6b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .developer-credits a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .developer-credits a:hover {
+            color: #ff6b6b;
+            text-decoration: underline;
+        }
         
         @media (max-width: 768px) {
             .about-content, .captain-section, .boat-section {
@@ -360,28 +397,28 @@
 </head>
 <body>
     <header>
-    <div class="container">
-        <h1>Прогулки на катере по Волге в Твери</h1>
-        <p>Насладитесь живописными видами Волги на комфортабельном катере "Печенюга" под управлением опытного капитана Дмитрия</p>
-        <div class="header-buttons">
-            <a href="#booking" class="btn btn-primary">Забронировать прогулку</a>
-            <a href="gallery.html" class="btn btn-primary">Фотогалерея</a>
-            <a href="reviews.html" class="btn btn-primary">Отзывы</a>
+        <div class="container">
+            <h1>Прогулки на катере по Волге в Твери</h1>
+            <p>Насладитесь живописными видами Волги на комфортабельном катере "Печенюга" под управлением опытного капитана Дмитрия</p>
+            <div class="header-buttons">
+                <a href="#booking" class="btn btn-primary">Забронировать прогулку</a>
+                <a href="gallery.html" class="btn btn-primary">Фотогалерея</a>
+                <a href="reviews.html" class="btn btn-primary">Отзывы</a>
+            </div>
+            <div class="booking-phone">
+                +7 905 601-20-53 Телефон для бронирования
+                <a href="https://wa.me/79056012053" target="_blank" class="social-icon whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://t.me/+79056012053" target="_blank" class="social-icon telegram">
+                    <i class="fab fa-telegram-plane"></i>
+                </a>
+            </div>
+            <div class="price-banner">
+                Прогулка от 30 мин - 2000 руб.
+            </div>
         </div>
-        <div class="booking-phone">
-            +7 905 601-20-53 Телефон для бронирования
-            <a href="https://wa.me/79056012053" target="_blank" class="social-icon whatsapp">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="https://t.me/+79056012053" target="_blank" class="social-icon telegram">
-                <i class="fab fa-telegram-plane"></i>
-            </a>
-        </div>
-        <div class="price-banner">
-            Прогулка от 30 мин - 2000 руб.
-        </div>
-    </div>
-</header>
+    </header>
     
     <section class="section about">
         <div class="container">
@@ -529,6 +566,12 @@
             <div class="copyright">
                 <p>&copy; 2025 Прогулки на катере "Печенюга" по Волге в Твери. Капитан Дмитрий.</p>
             </div>
+            
+            <!-- Добавленный блок с подписью студии -->
+            <div class="developer-credits">
+                <div class="developer-logo">SV</div>
+                <span>Сайт разработан <a href="https://вашсайт.рф" target="_blank">веб-студией Сальникова Василия</a></span>
+            </div>
         </div>
     </footer>
     
@@ -603,6 +646,6 @@
             this.src = 'https://images.unsplash.com/photo-1518544864413-8dfb18c9a6a7';
         };
     });
-</script>
+    </script>
 </body>
 </html>
