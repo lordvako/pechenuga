@@ -13,9 +13,9 @@
         }
         
         body {
-            color: #FFFFFF; /* Розовый цвет текста */
+            color: #FFFFFF; 
             line-height: 1.6;
-            background-color: #000; /* Черный фон */
+            background-color: #000; 
         }
         
         .container {
@@ -28,10 +28,48 @@
             background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://upload.wikimedia.org/wikipedia/commons/b/bf/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D0%B0_%D1%81_%D0%BB%D0%B5%D0%B2%D0%BE%D0%B3%D0%BE_%D0%B1%D0%B5%D1%80%D0%B5%D0%B3%D0%B0_%D0%92%D0%BE%D0%BB%D0%B3%D0%B8.JPG');
             background-size: cover;
             background-position: center;
-            color: #FFFFFF; /* Розовый цвет текста */
-            padding: 100px 0;
-            text-align: center;
+            color: #FFFFFF;
+            /* Изменено: убран лишний padding, теперь он будет внутри flex-контейнера */
+            padding: 60px 0; 
             border-bottom: 2px solid #FFFFFF;
+            position: relative; /* Добавлено для позиционирования эмблемы */
+        }
+
+        /* Добавлен новый стиль для контейнера хедера с flex */
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Размещаем текст слева, эмблему справа */
+            gap: 30px;
+        }
+
+        /* Левый блок с текстом и кнопками */
+        .header-text {
+            flex: 1; /* Занимает все доступное место, чтобы прижать эмблему вправо */
+            text-align: center; /* Центрируем текст внутри левого блока */
+        }
+
+        /* Правый блок для эмблемы */
+        .header-logo {
+            flex-shrink: 0; /* Запрещаем сжиматься */
+            width: 150px; /* Ширина контейнера для эмблемы */
+            height: 150px; /* Высота контейнера для эмблемы */
+            border-radius: 50%; /* Делаем контейнер круглым */
+            overflow: hidden; /* Прячем всё, что вылезет за круг */
+            border: 3px solid #FFFFFF; /* Белая рамка вокруг эмблемы (по желанию, можно убрать) */
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.6); /* Неоновая подсветка */
+            background-color: transparent; /* Прозрачный фон */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Стили для самой картинки */
+        .header-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Картинка заполнит весь круг */
+            display: block;
         }
         
         .header-buttons {
@@ -47,7 +85,7 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            color: #FFFFFF; /* Розовый цвет текста */
+            color: #FFFFFF;
             font-size: 20px;
             margin-top: 20px;
             font-weight: bold;
@@ -108,6 +146,16 @@
             box-shadow: 0 10px 20px rgba(255, 0, 255, 0.3);
         }
 
+        @media (max-width: 880px) { /* Адаптация для планшетов */
+            .header-content {
+                flex-direction: column; /* Ставим всё в колонку */
+                text-align: center;
+            }
+            .header-logo {
+                margin-top: 20px; /* Отступ сверху, когда эмблема под текстом */
+            }
+        }
+
         @media (max-width: 480px) {
             .header-buttons {
                 flex-direction: column;
@@ -128,6 +176,10 @@
             .price-banner {
                 font-size: 16px;
                 padding: 10px 15px;
+            }
+            .header-logo {
+                width: 120px; /* Чуть меньше на телефонах */
+                height: 120px;
             }
         }
         
@@ -434,24 +486,37 @@
 <body>
     <header>
         <div class="container">
-            <h1>Прогулки на катере по Волге в Твери</h1>
-            <p>Насладитесь живописными видами Волги на комфортабельном катере "Печенюга" под управлением опытного капитана Дмитрия</p>
-            <div class="header-buttons">
-                <a href="#booking" class="btn btn-primary">Забронировать прогулку</a>
-                <a href="gallery.html" class="btn btn-primary">Фотогалерея</a>
-                <a href="reviews.html" class="btn btn-primary">Отзывы</a>
-            </div>
-            <div class="booking-phone">
-                +7 996 635-20-53 Телефон для бронирования
-                <a href="https://wa.me/79056012053" target="_blank" class="social-icon whatsapp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://t.me/+79056012053" target="_blank" class="social-icon telegram">
-                    <i class="fab fa-telegram-plane"></i>
-                </a>
-            </div>
-            <div class="price-banner">
-                Прогулка 1 час - от 5000 руб.
+            <!-- Новый flex-контейнер для шапки -->
+            <div class="header-content">
+                <!-- Левая часть с текстом -->
+                <div class="header-text">
+                    <h1>Прогулки на катере по Волге в Твери</h1>
+                    <p>Насладитесь живописными видами Волги на комфортабельном катере "Печенюга" под управлением опытного капитана Дмитрия</p>
+                    <div class="header-buttons">
+                        <a href="#booking" class="btn btn-primary">Забронировать прогулку</a>
+                        <a href="gallery.html" class="btn btn-primary">Фотогалерея</a>
+                        <a href="reviews.html" class="btn btn-primary">Отзывы</a>
+                    </div>
+                    <div class="booking-phone">
+                        +7 996 635-20-53 Телефон для бронирования
+                        <a href="https://wa.me/79056012053" target="_blank" class="social-icon whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://t.me/+79056012053" target="_blank" class="social-icon telegram">
+                            <i class="fab fa-telegram-plane"></i>
+                        </a>
+                    </div>
+                    <div class="price-banner">
+                        Прогулка 1 час - от 5000 руб.
+                    </div>
+                </div>
+                
+                <!-- Правая часть с эмблемой (логотипом) -->
+                <div class="header-logo">
+                    <!-- ВСТАВЬТЕ СЮДА ВАШУ ПРЯМУЮ ССЫЛКУ НА КАРТИНКУ БЕЗ ФОНА -->
+                    <img src="https://lh3.googleusercontent.com/d/1Lq32j3KYXJYQnrjUnZqpPsmrNJiyxBuK" alt="Эмблема Печенюга">
+                    <!-- Пример: <img src="https://i.ibb.co/ваш-код/emblem.png" alt="Эмблема Печенюга"> -->
+                </div>
             </div>
         </div>
     </header>
@@ -685,18 +750,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
