@@ -31,6 +31,7 @@
             color: #FFFFFF;
             padding: 60px 0;
             border-bottom: 2px solid #FFFFFF;
+            text-align: center; /* Добавлено для центрирования всего содержимого header */
         }
         
         header h1 {
@@ -51,7 +52,7 @@
             transition: all 0.3s;
             border: 2px solid #fdc9eb;
             cursor: pointer;
-            margin-top: 20px;
+            margin: 20px auto 0; /* Изменено: auto по бокам для центрирования */
         }
         
         .btn:hover {
@@ -86,14 +87,14 @@
             border-radius: 10px;
             position: relative;
             transition: transform 0.3s, box-shadow 0.3s;
-            border: 2px solid #fdc9eb; /* Розовая рамка как на главной */
+            border: 2px solid #fdc9eb;
             background-color: #000000;
-            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.2); /* Неоновая подсветка как на главной */
+            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.2);
         }
         
         .gallery-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(255, 0, 255, 0.4); /* Усиление свечения при наведении */
+            box-shadow: 0 10px 25px rgba(255, 0, 255, 0.4);
         }
         
         .gallery-item img {
@@ -174,8 +175,8 @@
             }
             
             .btn {
-                width: 100%;
-                text-align: center;
+                width: auto;
+                display: inline-block;
             }
         }
 
