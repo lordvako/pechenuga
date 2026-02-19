@@ -15,7 +15,7 @@
         body {
             color: #333;
             line-height: 1.6;
-            background-color: #f9f9f9;
+            background-color: #000000; /* Черный фон для всей страницы */
         }
         
         .container {
@@ -25,7 +25,7 @@
         }
         
         header {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://upload.wikimedia.org/wikipedia/commons/b/bf/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D0%B0_%D1%81_%D0%BB%D0%B5%D0%B2%D0%BE%D0%B3%D0%BE_%D0%B1%D0%B5%D1%80%D0%B5%D0%B3%D0%B0_%D0%92%D0%BE%D0%BB%D0%B3%D0%B8.JPG');
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://upload.wikimedia.org/wikipedia/commons/b/bf/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D0%B0_%D1%81_%D0%BB%D0%B5%D0%B2%D0%BE%D0%B3%D0%BE_%D0%B1%D0%B5%D1%80%D0%B5%D0%B3%D0%B0_%D0%92%D0%BE%D0%BB%D0%B3%D0%B8.JPG');
             background-size: cover;
             background-position: center;
             color: white;
@@ -41,7 +41,7 @@
         
         .btn {
             display: inline-block;
-            background: #ff6b6b;
+            background: #ff00ff; /* Неоново-розовый цвет для кнопки */
             color: white;
             padding: 12px 30px;
             border-radius: 30px;
@@ -51,29 +51,32 @@
             border: none;
             cursor: pointer;
             margin-top: 20px;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.5); /* Неоновое свечение */
         }
         
         .btn:hover {
-            background: #ff5252;
+            background: #ff44ff; /* Более светлый розовый при наведении */
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
         }
         
         .section {
             padding: 80px 0;
+            background-color: #000000; /* Черный фон для секции с галереей */
         }
         
         .section-title {
             text-align: center;
             margin-bottom: 50px;
             font-size: 36px;
-            color: #2c3e50;
+            color: #ff00ff; /* Неоново-розовый цвет заголовка */
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
         }
         
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 25px; /* Увеличил отступы для лучшего вида рамок */
         }
         
         .gallery-item {
@@ -81,12 +84,15 @@
             overflow: hidden;
             border-radius: 10px;
             position: relative;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.3); /* Неоновое свечение вокруг рамки */
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 4px solid #ff00ff; /* Неоново-розовая рамка */
+            background-color: #000000; /* Черный фон под изображением */
         }
         
         .gallery-item:hover {
             transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.8); /* Усиление свечения при наведении */
         }
         
         .gallery-item img {
@@ -94,6 +100,7 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s;
+            display: block; /* Убирает возможный отступ снизу */
         }
         
         .gallery-item:hover img {
@@ -101,16 +108,22 @@
         }
         
         footer {
-            background: #2c3e50;
+            background: #000000; /* Черный фон футера */
             color: white;
             padding: 30px 0;
             text-align: center;
+            border-top: 3px solid #ff00ff; /* Неоново-розовая полоска сверху */
         }
         
         .copyright {
             margin-top: 30px;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 0, 255, 0.3); /* Розоватая линия */
+        }
+        
+        .copyright p {
+            color: #ff00ff; /* Неоново-розовый текст */
+            text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
         }
         
         @media (max-width: 768px) {
@@ -192,7 +205,7 @@
               <div class="gallery-item">
                     <img src="https://lh3.googleusercontent.com/d/1fndUu-1Gz4IHnh3AffsbUegdsWKa6Qp0" alt="Катер на воде">
                 </div>
-                  
+            </div>
         </div>
     </section>
     
@@ -205,9 +218,3 @@
     </footer>
 </body>
 </html>
-
-
-
-
-
-
