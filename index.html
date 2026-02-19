@@ -16,12 +16,15 @@
             color: #FFFFFF; 
             line-height: 1.6;
             background-color: #000; 
+            overflow-x: hidden; /* Предотвращаем горизонтальный скролл от волн */
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
+            position: relative;
+            z-index: 2; /* Контент выше волн */
         }
         
         header {
@@ -32,6 +35,7 @@
             padding: 60px 0; 
             border-bottom: 2px solid #FFFFFF;
             position: relative;
+            z-index: 2;
         }
 
         .header-content {
@@ -58,7 +62,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: pulseLogo 3s ease-in-out infinite; /* Добавлена анимация для логотипа */
+            animation: pulseLogo 3s ease-in-out infinite;
         }
 
         .header-logo img {
@@ -90,20 +94,20 @@
 
         .price-banner {
             background: rgba(0, 0, 0, 0.7);
-            border: 2px solid #fdc9eb; /* Розовая рамка */
+            border: 2px solid #fdc9eb;
             border-radius: 10px;
             padding: 12px 20px;
             margin: 15px auto 0;
             font-size: 18px;
             backdrop-filter: blur(5px);
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5); /* Усиленное свечение */
-            animation: pulseGlow 2s ease-in-out infinite; /* Анимация пульсации и свечения */
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+            animation: pulseGlow 2s ease-in-out infinite;
             max-width: fit-content;
             color: #fdc9eb;
-            text-shadow: 0 0 10px rgba(255, 0, 255, 0.7); /* Текст тоже светится */
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
         }
 
-        /* Анимация для баннера с ценой - пульсация и изменение цвета */
+        /* Анимация для баннера с ценой */
         @keyframes pulseGlow {
             0% {
                 transform: scale(1);
@@ -116,7 +120,7 @@
                 box-shadow: 0 0 30px rgba(255, 0, 255, 0.9);
                 border-color: #ff44ff;
                 text-shadow: 0 0 15px rgba(255, 0, 255, 1);
-                color: #ffb3ff; /* Более светлый розовый */
+                color: #ffb3ff;
             }
             100% {
                 transform: scale(1);
@@ -126,7 +130,7 @@
             }
         }
 
-        /* Анимация для логотипа - плавное пульсирование */
+        /* Анимация для логотипа */
         @keyframes pulseLogo {
             0% {
                 transform: scale(1);
@@ -143,6 +147,79 @@
                 box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
                 border-color: #FFFFFF;
             }
+        }
+
+        /* Анимация волн */
+        .waves-container {
+            position: relative;
+            width: 100%;
+            height: 150px;
+            margin-top: -50px;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .waves {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ff00ff" fill-opacity="0.3" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+            animation: waveAnimation 8s linear infinite;
+            opacity: 0.5;
+        }
+
+        .wave:nth-child(2) {
+            bottom: 10px;
+            opacity: 0.3;
+            animation: waveAnimation 10s linear infinite reverse;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23fdc9eb" fill-opacity="0.5" d="M0,256L48,234.7C96,213,192,171,288,176C384,181,480,235,576,250.7C672,267,768,245,864,218.7C960,192,1056,160,1152,165.3C1248,171,1344,213,1392,234.7L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/></svg>');
+            background-size: cover;
+        }
+
+        .wave:nth-child(3) {
+            bottom: 20px;
+            opacity: 0.2;
+            animation: waveAnimation 12s linear infinite;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ff00ff" fill-opacity="0.2" d="M0,96L48,122.7C96,149,192,203,288,208C384,213,480,171,576,138.7C672,107,768,85,864,112C960,139,1056,213,1152,224C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/></svg>');
+            background-size: cover;
+        }
+
+        @keyframes waveAnimation {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            25% {
+                transform: translateX(-25px) translateY(-5px);
+            }
+            50% {
+                transform: translateX(-50px) translateY(0);
+            }
+            75% {
+                transform: translateX(-25px) translateY(5px);
+            }
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+        }
+
+        .wave-separator {
+            position: relative;
+            width: 100%;
+            height: 100px;
+            margin-top: -100px;
+            background: linear-gradient(180deg, transparent 0%, #000 100%);
+            z-index: 3;
+            pointer-events: none;
         }
 
         .social-icon {
@@ -186,7 +263,7 @@
             }
             .header-logo {
                 margin-top: 20px;
-                width: 200px; /* Немного уменьшаем на планшетах */
+                width: 200px;
                 height: 200px;
             }
         }
@@ -254,6 +331,8 @@
         
         .section {
             padding: 80px 0;
+            position: relative;
+            z-index: 2;
         }
         
         .section-title {
@@ -268,6 +347,8 @@
             background-color: #111;
             border-top: 1px solid #FFFFFF;
             border-bottom: 1px solid #FFFFFF;
+            position: relative;
+            z-index: 2;
         }
         
         .about-container {
@@ -277,6 +358,8 @@
             box-shadow: 0 5px 15px rgba(255, 0, 255, 0.2);
             margin-bottom: 30px;
             border: 1px solid #333;
+            position: relative;
+            z-index: 2;
         }
         
         .about-content {
@@ -301,6 +384,7 @@
             overflow: hidden;
             box-shadow: 0 15px 30px rgba(255, 0, 255, 0.2);
             border: 1px solid #fdc9eb;
+            position: relative;
         }
         
         .about-image img {
@@ -339,6 +423,7 @@
             border-radius: 10px;
             overflow: hidden;
             border: 1px solid #FFFFFF;
+            position: relative;
         }
         
         .captain-image img, .boat-image img {
@@ -434,6 +519,8 @@
             padding: 30px 0;
             text-align: center;
             border-top: 2px solid #FFFFFF;
+            position: relative;
+            z-index: 2;
         }
         
         .footer-content {
@@ -524,6 +611,14 @@
             header p {
                 font-size: 18px;
             }
+
+            .waves-container {
+                height: 100px;
+            }
+            
+            .wave {
+                height: 60px;
+            }
         }
 
         ::placeholder {
@@ -572,6 +667,16 @@
             </div>
         </div>
     </header>
+
+    <!-- Волны после хедера -->
+    <div class="waves-container">
+        <div class="waves">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+        <div class="wave-separator"></div>
+    </div>
     
     <section class="section about">
         <div class="container">
@@ -586,6 +691,15 @@
                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D0%B0_%D1%81_%D0%BB%D0%B5%D0%B2%D0%BE%D0%B3%D0%BE_%D0%B1%D0%B5%D1%80%D0%B5%D0%B3%D0%B0_%D0%92%D0%BE%D0%BB%D0%B3%D0%B8.JPG" alt="Вид на Волгу в Твери">
                     </div>
                 </div>
+
+                <!-- Волны после первого блока с картинкой -->
+                <div class="waves-container" style="height: 80px; margin: 20px 0;">
+                    <div class="waves">
+                        <div class="wave" style="height: 60px;"></div>
+                        <div class="wave" style="height: 60px;"></div>
+                        <div class="wave" style="height: 60px;"></div>
+                    </div>
+                </div>
                 
                 <div class="captain-section">
                     <div class="captain-image">
@@ -595,6 +709,15 @@
                         <h3>Капитан Дмитрий</h3>
                         <p>Профессиональный капитан с большим опытом работы на Волге, обеспечит вашу безопасность во время прогулки, но и с удовольствием расскажет об истории города, интересных местах вдоль берегов Волги и особенностях судоходства.</p>
                         <p>"Для меня каждая прогулка - это возможность показать гостям красоту нашей реки и родного города с необычного ракурса" - говорит капитан.</p>
+                    </div>
+                </div>
+
+                <!-- Волны после блока с капитаном -->
+                <div class="waves-container" style="height: 80px; margin: 20px 0;">
+                    <div class="waves">
+                        <div class="wave" style="height: 60px;"></div>
+                        <div class="wave" style="height: 60px;"></div>
+                        <div class="wave" style="height: 60px;"></div>
                     </div>
                 </div>
                 
@@ -614,6 +737,15 @@
                             <li>Музыкальная система с Bluetooth</li>
                         </ul>
                         <p>Максимальная вместимость - 5 человек. Идеально подходит для семейных прогулок, романтических свиданий и небольших компаний.</p>
+                    </div>
+                </div>
+
+                <!-- Волны перед преимуществами -->
+                <div class="waves-container" style="height: 80px; margin: 20px 0;">
+                    <div class="waves">
+                        <div class="wave" style="height: 60px;"></div>
+                        <div class="wave" style="height: 60px;"></div>
+                        <div class="wave" style="height: 60px;"></div>
                     </div>
                 </div>
                 
@@ -637,6 +769,16 @@
             </div>
         </div>
     </section>
+
+    <!-- Волны перед формой бронирования -->
+    <div class="waves-container" style="height: 100px;">
+        <div class="waves">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+        <div class="wave-separator"></div>
+    </div>
     
     <section class="section booking" id="booking">
         <div class="container">
