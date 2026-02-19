@@ -13,9 +13,9 @@
         }
         
         body {
-            color: #333;
+            color: #FFFFFF;
             line-height: 1.6;
-            background-color: #e0e4e9;
+            background-color: #000;
         }
         
         .container {
@@ -25,12 +25,13 @@
         }
         
         header {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://upload.wikimedia.org/wikipedia/commons/b/bf/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D0%B0_%D1%81_%D0%BB%D0%B5%D0%B2%D0%BE%D0%B3%D0%BE_%D0%B1%D0%B5%D1%80%D0%B5%D0%B3%D0%B0_%D0%92%D0%BE%D0%BB%D0%B3%D0%B8.JPG');
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://upload.wikimedia.org/wikipedia/commons/b/bf/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D0%B0_%D1%81_%D0%BB%D0%B5%D0%B2%D0%BE%D0%B3%D0%BE_%D0%B1%D0%B5%D1%80%D0%B5%D0%B3%D0%B0_%D0%92%D0%BE%D0%BB%D0%B3%D0%B8.JPG');
             background-size: cover;
             background-position: center;
-            color: rgb(243, 245, 248);
-            padding: 100px 0;
+            color: #fdc9eb;
+            padding: 60px 0;
             text-align: center;
+            border-bottom: 2px solid #FFFFFF;
         }
         
         .header-buttons {
@@ -38,27 +39,27 @@
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 20px;
+            margin-top: 30px;
         }
 
         .btn-primary {
             display: inline-block;
-            background: #ff6b6b;
-            color: rgb(245, 246, 248);
+            background: #000;
+            color: #fdc9eb;
             padding: 12px 30px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s;
-            border: 2px solid #ff6b6b;
+            border: 2px solid #fdc9eb;
             cursor: pointer;
         }
 
         .btn-primary:hover {
-            background: #ff5252;
-            border-color: #ff5252;
+            background: #ff00ff;
+            color: #000;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(255, 0, 255, 0.3);
         }
 
         @media (max-width: 480px) {
@@ -77,50 +78,56 @@
             font-size: 48px;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: #fdc9eb;
         }
         
         header p {
             font-size: 20px;
             max-width: 800px;
             margin: 0 auto 30px;
+            color: #fdc9eb;
         }
         
         .section {
             padding: 80px 0;
+            background-color: #000;
         }
         
         .section-title {
             text-align: center;
             margin-bottom: 50px;
             font-size: 36px;
-            color: #2c3e50;
+            color: #fdc9eb;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
         }
         
         .reviews-container {
-            background: white;
+            background: #111;
             padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.2);
             margin-bottom: 30px;
+            border: 1px solid #333;
         }
         
         .add-review-btn {
             display: block;
             margin: 0 auto 40px;
-            background: #ff6b6b;
-            color: white;
+            background: #000;
+            color: #fdc9eb;
             padding: 12px 30px;
             border-radius: 30px;
-            border: none;
+            border: 2px solid #fdc9eb;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
         }
         
         .add-review-btn:hover {
-            background: #ff5252;
+            background: #ff00ff;
+            color: #000;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(255, 0, 255, 0.3);
         }
         
         .modal {
@@ -131,29 +138,38 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0, 0, 0, 0.9);
         }
         
         .modal-content {
-            background-color: #fefefe;
-            margin: 10% auto;
+            background-color: #111;
+            margin: 5% auto;
             padding: 30px;
             border-radius: 10px;
             width: 90%;
             max-width: 600px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 30px rgba(255, 0, 255, 0.3);
+            border: 2px solid #fdc9eb;
+            color: #FFFFFF;
+        }
+        
+        .modal-content h2 {
+            color: #fdc9eb;
+            margin-bottom: 20px;
+            text-align: center;
         }
         
         .close {
-            color: #aaa;
+            color: #fdc9eb;
             float: right;
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
+            transition: color 0.3s;
         }
         
         .close:hover {
-            color: black;
+            color: #ff00ff;
         }
         
         .form-group {
@@ -164,15 +180,27 @@
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
+            color: #fdc9eb;
         }
         
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
+            padding: 12px;
+            border: 1px solid #fdc9eb;
             border-radius: 5px;
+            background: #000;
+            color: #FFFFFF;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ff00ff;
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
         }
         
         .form-group textarea {
@@ -192,26 +220,27 @@
         
         .rating label {
             font-size: 24px;
-            color: #ccc;
+            color: #444;
             cursor: pointer;
             margin-right: 5px;
+            transition: color 0.3s;
         }
         
         .rating input:checked ~ label {
-            color: #ffc107;
+            color: #ff00ff;
         }
         
         .rating label:hover,
         .rating label:hover ~ label {
-            color: #ffc107;
+            color: #ff00ff;
         }
         
         .submit-review {
-            background: #ff6b6b;
-            color: white;
+            background: #000;
+            color: #fdc9eb;
             padding: 12px 30px;
             border-radius: 30px;
-            border: none;
+            border: 2px solid #fdc9eb;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
@@ -219,7 +248,10 @@
         }
         
         .submit-review:hover {
-            background: #ff5252;
+            background: #ff00ff;
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 0, 255, 0.3);
         }
         
         .reviews-list {
@@ -227,11 +259,18 @@
         }
         
         .review {
-            background: #f9f9f9;
+            background: #000;
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 20px;
-            border-left: 4px solid #ff6b6b;
+            border: 2px solid #fdc9eb;
+            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .review:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 0, 255, 0.4);
         }
         
         .review-header {
@@ -244,27 +283,31 @@
         .review-author {
             font-weight: bold;
             font-size: 18px;
+            color: #fdc9eb;
         }
         
         .review-date {
-            color: #777;
+            color: #aaa;
             font-size: 14px;
         }
         
         .review-rating {
-            color: #ffc107;
+            color: #ff00ff;
             margin: 5px 0;
+            font-size: 18px;
         }
         
         .review-text {
             line-height: 1.6;
+            color: #FFFFFF;
         }
         
         footer {
-            background: #2c3e50;
-            color: white;
+            background: #000;
+            color: #FFFFFF;
             padding: 30px 0;
             text-align: center;
+            border-top: 2px solid #FFFFFF;
         }
         
         .footer-content {
@@ -282,12 +325,69 @@
         .footer-section h3 {
             margin-bottom: 20px;
             font-size: 20px;
+            color: #fdc9eb;
+        }
+        
+        .footer-section p {
+            color: #FFFFFF;
+        }
+        
+        .social-icons a {
+            color: #FFFFFF;
+            font-size: 20px;
+            margin-right: 15px;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #ff00ff;
         }
         
         .copyright {
             margin-top: 30px;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 0, 255, 0.3);
+        }
+        
+        .copyright p {
+            color: #FFFFFF;
+        }
+        
+        /* Стили для подписи разработчика */
+        .developer-credits {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 0, 255, 0.3);
+            color: rgba(255, 0, 255, 0.7);
+            font-size: 14px;
+        }
+        
+        .developer-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .developer-credits a {
+            color: rgba(255, 0, 255, 0.9);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .developer-credits a:hover {
+            color: #fff;
+            text-decoration: underline;
         }
         
         @media (max-width: 768px) {
@@ -300,9 +400,22 @@
             }
             
             .modal-content {
-                margin: 20% auto;
+                margin: 10% auto;
                 width: 95%;
             }
+        }
+
+        /* Стили для placeholder */
+        ::placeholder {
+            color: rgba(255, 0, 255, 0.6);
+        }
+        
+        :-ms-input-placeholder {
+            color: rgba(255, 0, 255, 0.6);
+        }
+        
+        ::-ms-input-placeholder {
+            color: rgba(255, 0, 255, 0.6);
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -332,11 +445,11 @@
                         <form id="reviewForm">
                             <div class="form-group">
                                 <label for="reviewName">Ваше имя</label>
-                                <input type="text" id="reviewName" required>
+                                <input type="text" id="reviewName" placeholder="Введите ваше имя" required>
                             </div>
                             <div class="form-group">
                                 <label for="reviewLastName">Ваша фамилия</label>
-                                <input type="text" id="reviewLastName" required>
+                                <input type="text" id="reviewLastName" placeholder="Введите вашу фамилию" required>
                             </div>
                             <div class="form-group">
                                 <label for="reviewDate">Дата прогулки</label>
@@ -359,7 +472,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="reviewText">Ваш отзыв</label>
-                                <textarea id="reviewText" required></textarea>
+                                <textarea id="reviewText" placeholder="Поделитесь своими впечатлениями о прогулке..." required></textarea>
                             </div>
                             <button type="submit" class="submit-review">Опубликовать отзыв</button>
                         </form>
@@ -378,7 +491,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Контакты</h3>
-                    <p><i class="fas fa-phone"></i> +7 905 601-20-53</p>
+                    <p><i class="fas fa-phone"></i> +7 996 635-20-53</p>
                     <p><i class="fas fa-envelope"></i> pechenyuga@volga-tver.ru</p>
                     <p><i class="fas fa-map-marker-alt"></i> г. Тверь, набережная реки Волги</p>
                 </div>
@@ -398,6 +511,11 @@
             </div>
             <div class="copyright">
                 <p>&copy; 2025 Прогулки на катере "Печенюга" по Волге в Твери. Капитан Дмитрий.</p>
+            </div>
+            
+            <div class="developer-credits">
+                <div class="developer-logo">SV</div>
+                <span>Сайт разработан <a href="https://вашсайт.рф" target="_blank">веб-студией Сальникова Василия</a></span>
             </div>
         </div>
     </footer>
@@ -442,7 +560,7 @@
                         lastName: "Петрова",
                         date: "10.06.2025",
                         rating: 4,
-                        text: "Прекрасно провели время всей семьей. Дети в восторге от прогулки."
+                        text: "Прекрасно провели время всей семьей. Дети в восторге от прогулки. Отдельное спасибо капитану за интересный рассказ о городе!"
                     }
                 ];
                 
