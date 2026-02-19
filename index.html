@@ -28,7 +28,7 @@
             background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://upload.wikimedia.org/wikipedia/commons/b/bf/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D0%B0_%D1%81_%D0%BB%D0%B5%D0%B2%D0%BE%D0%B3%D0%BE_%D0%B1%D0%B5%D1%80%D0%B5%D0%B3%D0%B0_%D0%92%D0%BE%D0%BB%D0%B3%D0%B8.JPG');
             background-size: cover;
             background-position: center;
-            color: #fdc9eb; /* Изменено на розовый */
+            color: #fdc9eb;
             padding: 60px 0; 
             border-bottom: 2px solid #FFFFFF;
             position: relative;
@@ -58,6 +58,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            animation: pulseLogo 3s ease-in-out infinite; /* Добавлена анимация для логотипа */
         }
 
         .header-logo img {
@@ -80,7 +81,7 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            color: #fdc9eb; /* Изменено на розовый */
+            color: #fdc9eb;
             font-size: 20px;
             margin-top: 20px;
             font-weight: bold;
@@ -89,22 +90,59 @@
 
         .price-banner {
             background: rgba(0, 0, 0, 0.7);
-            border: 2px solid #FFFFFF;
+            border: 2px solid #fdc9eb; /* Розовая рамка */
             border-radius: 10px;
             padding: 12px 20px;
             margin: 15px auto 0;
             font-size: 18px;
             backdrop-filter: blur(5px);
-            box-shadow: 0 4px 10px rgba(255, 0, 255, 0.3);
-            animation: pulse 2s infinite;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5); /* Усиленное свечение */
+            animation: pulseGlow 2s ease-in-out infinite; /* Анимация пульсации и свечения */
             max-width: fit-content;
-            color: #fdc9eb; /* Изменено на розовый */
+            color: #fdc9eb;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.7); /* Текст тоже светится */
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
+        /* Анимация для баннера с ценой - пульсация и изменение цвета */
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+                border-color: #fdc9eb;
+                text-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 30px rgba(255, 0, 255, 0.9);
+                border-color: #ff44ff;
+                text-shadow: 0 0 15px rgba(255, 0, 255, 1);
+                color: #ffb3ff; /* Более светлый розовый */
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+                border-color: #fdc9eb;
+                text-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
+            }
+        }
+
+        /* Анимация для логотипа - плавное пульсирование */
+        @keyframes pulseLogo {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+                border-color: #FFFFFF;
+            }
+            50% {
+                transform: scale(1.03);
+                box-shadow: 0 0 40px rgba(255, 0, 255, 0.9);
+                border-color: #ff00ff;
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+                border-color: #FFFFFF;
+            }
         }
 
         .social-icon {
@@ -124,13 +162,13 @@
         .btn-primary {
             display: inline-block;
             background: #000;
-            color: #fdc9eb; /* Розовый цвет текста */
+            color: #fdc9eb;
             padding: 12px 30px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s;
-            border: 2px solid #fdc9eb; /* Розовая рамка */
+            border: 2px solid #fdc9eb;
             cursor: pointer;
         }
 
@@ -148,6 +186,8 @@
             }
             .header-logo {
                 margin-top: 20px;
+                width: 200px; /* Немного уменьшаем на планшетах */
+                height: 200px;
             }
         }
 
@@ -173,8 +213,8 @@
                 padding: 10px 15px;
             }
             .header-logo {
-                width: 120px;
-                height: 120px;
+                width: 150px;
+                height: 150px;
             }
         }
         
@@ -182,14 +222,14 @@
             font-size: 48px;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            color: #fdc9eb; /* Розовый цвет */
+            color: #fdc9eb;
         }
         
         header p {
             font-size: 20px;
             max-width: 800px;
             margin: 0 auto 30px;
-            color: #fdc9eb; /* Розовый цвет */
+            color: #fdc9eb;
         }
         
         .btn {
@@ -220,7 +260,7 @@
             text-align: center;
             margin-bottom: 50px;
             font-size: 36px;
-            color: #fdc9eb; /* Розовый цвет */
+            color: #fdc9eb;
             text-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
         }
         
@@ -252,7 +292,7 @@
         }
         
         .about-text p {
-            color: #FFFFFF; /* Белый цвет для обычного текста */
+            color: #FFFFFF;
         }
         
         .about-image {
@@ -288,7 +328,7 @@
         }
         
         .captain-info h3, .boat-info h3 {
-            color: #fdc9eb; /* Розовый цвет для подзаголовков */
+            color: #fdc9eb;
             margin-bottom: 15px;
             font-size: 24px;
         }
@@ -334,7 +374,7 @@
         .feature h3 {
             margin-bottom: 15px;
             font-size: 22px;
-            color: #fdc9eb; /* Розовый цвет */
+            color: #fdc9eb;
         }
         
         .booking {
@@ -365,7 +405,7 @@
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
-            color: #fdc9eb; /* Розовый цвет */
+            color: #fdc9eb;
         }
         
         .form-group input,
@@ -377,6 +417,15 @@
             border-radius: 5px;
             background: #000;
             color: #FFFFFF;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff00ff;
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
         }
         
         footer {
@@ -402,7 +451,7 @@
         .footer-section h3 {
             margin-bottom: 20px;
             font-size: 20px;
-            color: #fdc9eb; /* Розовый цвет */
+            color: #fdc9eb;
         }
         
         .social-icons a {
