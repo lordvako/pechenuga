@@ -30,8 +30,40 @@
             background-position: center;
             color: #fdc9eb;
             padding: 60px 0;
-            text-align: center;
             border-bottom: 2px solid #FFFFFF;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .header-text {
+            flex: 1;
+            text-align: center;
+        }
+
+        .header-logo {
+            flex-shrink: 0;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #FFFFFF;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
         
         .header-buttons {
@@ -39,7 +71,7 @@
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         .btn-primary {
@@ -60,6 +92,16 @@
             color: #000;
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(255, 0, 255, 0.3);
+        }
+
+        @media (max-width: 880px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-logo {
+                margin-top: 20px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -423,11 +465,19 @@
 <body>
     <header>
         <div class="container">
-            <h1>Отзывы о прогулках на катере "Печенюга"</h1>
-            <p>Что говорят наши гости о своих впечатлениях от прогулок по Волге</p>
-            <div class="header-buttons">
-                <a href="index.html" class="btn-primary">На главную</a>
-                <a href="gallery.html" class="btn-primary">Фотогалерея</a>
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>Отзывы о прогулках на катере "Печенюга"</h1>
+                    <p>Что говорят наши гости о своих впечатлениях от прогулок по Волге</p>
+                    <div class="header-buttons">
+                        <a href="index.html" class="btn-primary">На главную</a>
+                        <a href="gallery.html" class="btn-primary">Фотогалерея</a>
+                    </div>
+                </div>
+                
+                <div class="header-logo">
+                    <img src="https://lh3.googleusercontent.com/d/1Lq32j3KYXJYQnrjUnZqpPsmrNJiyxBuK" alt="Эмблема Печенюга">
+                </div>
             </div>
         </div>
     </header>
@@ -549,18 +599,60 @@
             if (savedReviews.length === 0) {
                 const demoReviews = [
                     {
-                        name: "Иван",
-                        lastName: "Иванов",
+                        name: "Алексей",
+                        lastName: "Смирнов",
                         date: "15.06.2025",
                         rating: 5,
-                        text: "Отличная прогулка! Капитан Дмитрий - настоящий профессионал, показал нам самые красивые места на Волге. Катер уютный и комфортный. Обязательно вернемся снова!"
+                        text: "Потрясающая прогулка! Капитан Дмитрий - настоящий профессионал, показал нам такие места, которые с берега не увидишь. Катер очень уютный, чистый. Обязательно приедем еще с друзьями!"
                     },
                     {
-                        name: "Елена",
-                        lastName: "Петрова",
+                        name: "Екатерина",
+                        lastName: "Волкова",
+                        date: "12.06.2025",
+                        rating: 5,
+                        text: "Отмечали день рождения на катере. Это было незабываемо! Дмитрий создал потрясающую атмосферу, рассказывал интересные истории о Твери. Закат на Волге - это что-то невероятное. Спасибо огромное!"
+                    },
+                    {
+                        name: "Михаил",
+                        lastName: "Козлов",
                         date: "10.06.2025",
                         rating: 4,
-                        text: "Прекрасно провели время всей семьей. Дети в восторге от прогулки. Отдельное спасибо капитану за интересный рассказ о городе!"
+                        text: "Отличная прогулка с семьей. Дети были в восторге от катания по Волге. Катер комфортный, есть тент от солнца. Единственное - хотелось бы чуть больше времени, час пролетел незаметно. В следующий раз возьмем два часа!"
+                    },
+                    {
+                        name: "Анна",
+                        lastName: "Соколова",
+                        date: "08.06.2025",
+                        rating: 5,
+                        text: "Романтическая прогулка с молодым человеком. Дмитрий сделал этот вечер особенным - приглушил свет, включил нашу музыку. Виды на город с воды открываются потрясающие. Очень рекомендую для свиданий!"
+                    },
+                    {
+                        name: "Дмитрий",
+                        lastName: "Морозов",
+                        date: "05.06.2025",
+                        rating: 5,
+                        text: "Брал катер для рыбалки с друзьями. Отличное место, хороший катер, капиент знает где клюет. Наловили судаков! Дмитрий помог с советами, показал лучшие места. Обязательно вернемся!"
+                    },
+                    {
+                        name: "Ольга",
+                        lastName: "Новикова",
+                        date: "01.06.2025",
+                        rating: 5,
+                        text: "Водили экскурсию для иногородних гостей. Все были в полном восторге! Дмитрий не только отличный капитан, но и прекрасный рассказчик. Узнали много нового об истории Твери. Спасибо!"
+                    },
+                    {
+                        name: "Игорь",
+                        lastName: "Павлов",
+                        date: "28.05.2025",
+                        rating: 4,
+                        text: "Хорошая прогулка, катер в отличном состоянии. Особенно понравилось, что можно взять с собой еду и напитки. Устроили пикник на воде. Рекомендую!"
+                    },
+                    {
+                        name: "Наталья",
+                        lastName: "Белова",
+                        date: "25.05.2025",
+                        rating: 5,
+                        text: "Второй раз приезжаем из Москвы специально на прогулку с Дмитрием. Это уже традиция - начинать лето на Волге. Каждый раз новые впечатления, новые маршруты. Очень душевно и красиво!"
                     }
                 ];
                 
