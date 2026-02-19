@@ -58,7 +58,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: pulseLogo 3s ease-in-out infinite;
+            animation: pulseLogo 3s ease-in-out infinite; /* Добавлена анимация для логотипа */
         }
 
         .header-logo img {
@@ -90,19 +90,20 @@
 
         .price-banner {
             background: rgba(0, 0, 0, 0.7);
-            border: 2px solid #fdc9eb;
+            border: 2px solid #fdc9eb; /* Розовая рамка */
             border-radius: 10px;
             padding: 12px 20px;
             margin: 15px auto 0;
             font-size: 18px;
             backdrop-filter: blur(5px);
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
-            animation: pulseGlow 2s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5); /* Усиленное свечение */
+            animation: pulseGlow 2s ease-in-out infinite; /* Анимация пульсации и свечения */
             max-width: fit-content;
             color: #fdc9eb;
-            text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.7); /* Текст тоже светится */
         }
 
+        /* Анимация для баннера с ценой - пульсация и изменение цвета */
         @keyframes pulseGlow {
             0% {
                 transform: scale(1);
@@ -115,7 +116,7 @@
                 box-shadow: 0 0 30px rgba(255, 0, 255, 0.9);
                 border-color: #ff44ff;
                 text-shadow: 0 0 15px rgba(255, 0, 255, 1);
-                color: #ffb3ff;
+                color: #ffb3ff; /* Более светлый розовый */
             }
             100% {
                 transform: scale(1);
@@ -125,6 +126,7 @@
             }
         }
 
+        /* Анимация для логотипа - плавное пульсирование */
         @keyframes pulseLogo {
             0% {
                 transform: scale(1);
@@ -140,133 +142,6 @@
                 transform: scale(1);
                 box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
                 border-color: #FFFFFF;
-            }
-        }
-
-        /* Стили для контейнера с волнами под фотографией */
-        .image-with-waves {
-            position: relative;
-            width: 100%;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .image-with-waves img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            border-radius: 10px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .wave-container {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 60px;
-            z-index: 3;
-            overflow: hidden;
-            border-radius: 0 0 10px 10px;
-        }
-
-        .wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 200%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 10px,
-                rgba(255, 0, 255, 0.3) 10px,
-                rgba(255, 0, 255, 0.3) 12px,
-                transparent 12px,
-                transparent 22px
-            );
-            animation: waveMove 4s linear infinite;
-        }
-
-        .wave:nth-child(2) {
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 15px,
-                rgba(255, 192, 203, 0.4) 15px,
-                rgba(255, 192, 203, 0.4) 17px,
-                transparent 17px,
-                transparent 27px
-            );
-            animation: waveMove 6s linear infinite reverse;
-            opacity: 0.7;
-        }
-
-        .wave:nth-child(3) {
-            background: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 20px,
-                rgba(255, 0, 255, 0.2) 20px,
-                rgba(255, 0, 255, 0.2) 25px,
-                transparent 25px,
-                transparent 35px
-            );
-            animation: waveMove 5s linear infinite;
-            opacity: 0.5;
-            mix-blend-mode: overlay;
-        }
-
-        @keyframes waveMove {
-            0% {
-                transform: translateX(0) translateY(0);
-            }
-            25% {
-                transform: translateX(-25px) translateY(-2px);
-            }
-            50% {
-                transform: translateX(-50px) translateY(0);
-            }
-            75% {
-                transform: translateX(-25px) translateY(2px);
-            }
-            100% {
-                transform: translateX(0) translateY(0);
-            }
-        }
-
-        /* Добавляем небольшие волны для эффекта ряби */
-        .ripple {
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            width: 100%;
-            height: 20px;
-            background: radial-gradient(circle at 20% 50%, rgba(255, 0, 255, 0.4) 0%, transparent 50%);
-            animation: rippleMove 3s ease-in-out infinite;
-            z-index: 4;
-        }
-
-        .ripple:nth-child(2) {
-            bottom: 20px;
-            animation: rippleMove 4s ease-in-out infinite reverse;
-            background: radial-gradient(circle at 80% 50%, rgba(255, 192, 203, 0.4) 0%, transparent 50%);
-        }
-
-        @keyframes rippleMove {
-            0% {
-                transform: scale(1) translateX(0);
-                opacity: 0.3;
-            }
-            50% {
-                transform: scale(1.2) translateX(20px);
-                opacity: 0.6;
-            }
-            100% {
-                transform: scale(1) translateX(0);
-                opacity: 0.3;
             }
         }
 
@@ -311,7 +186,7 @@
             }
             .header-logo {
                 margin-top: 20px;
-                width: 200px;
+                width: 200px; /* Немного уменьшаем на планшетах */
                 height: 200px;
             }
         }
@@ -428,10 +303,6 @@
             border: 1px solid #fdc9eb;
         }
         
-        .about-image .image-with-waves {
-            height: 400px;
-        }
-        
         .about-image img {
             width: 100%;
             height: 400px;
@@ -468,11 +339,6 @@
             border-radius: 10px;
             overflow: hidden;
             border: 1px solid #FFFFFF;
-            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.2);
-        }
-        
-        .captain-image .image-with-waves, .boat-image .image-with-waves {
-            height: 260px;
         }
         
         .captain-image img, .boat-image img {
@@ -651,24 +517,12 @@
                 min-height: 300px;
             }
             
-            .captain-image .image-with-waves, .boat-image .image-with-waves {
-                height: 300px;
-            }
-            
-            .about-image .image-with-waves {
-                height: 300px;
-            }
-            
             header h1 {
                 font-size: 36px;
             }
             
             header p {
                 font-size: 18px;
-            }
-
-            .wave-container {
-                height: 40px;
             }
         }
 
@@ -723,41 +577,19 @@
         <div class="container">
             <h2 class="section-title">О наших прогулках</h2>
             <div class="about-container">
-                <!-- Первый блок: текст слева, фото справа с волнами -->
                 <div class="about-content">
                     <div class="about-text">
                         <p>Добро пожаловать на борт катера "Печенюга"! Мы предлагаем незабываемые прогулки по величественной реке Волге в самом сердце Твери.</p>
                         <p>Наш катер вмещает до 5 человек, что делает прогулку уютной и комфортной. Вы сможете насладиться прекрасными видами городской набережной, мостов и природных пейзажей, которые открываются с воды.</p>
                     </div>
                     <div class="about-image">
-                        <div class="image-with-waves">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D0%B0_%D1%81_%D0%BB%D0%B5%D0%B2%D0%BE%D0%B3%D0%BE_%D0%B1%D0%B5%D1%80%D0%B5%D0%B3%D0%B0_%D0%92%D0%BE%D0%BB%D0%B3%D0%B8.JPG" alt="Вид на Волгу в Твери">
-                            <!-- Волны под фотографией -->
-                            <div class="wave-container">
-                                <div class="wave"></div>
-                                <div class="wave"></div>
-                                <div class="wave"></div>
-                                <div class="ripple"></div>
-                                <div class="ripple"></div>
-                            </div>
-                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D0%B0_%D1%81_%D0%BB%D0%B5%D0%B2%D0%BE%D0%B3%D0%BE_%D0%B1%D0%B5%D1%80%D0%B5%D0%B3%D0%B0_%D0%92%D0%BE%D0%BB%D0%B3%D0%B8.JPG" alt="Вид на Волгу в Твери">
                     </div>
                 </div>
                 
-                <!-- Второй блок: фото капитана слева с волнами, текст справа -->
                 <div class="captain-section">
                     <div class="captain-image">
-                        <div class="image-with-waves">
-                            <img src="https://lh3.googleusercontent.com/d/1BJzOk1IAZqylrgSOiN1A7h7jkfA01yF6=w1000" alt="Капитан Дмитрий">
-                            <!-- Волны под фотографией капитана -->
-                            <div class="wave-container">
-                                <div class="wave"></div>
-                                <div class="wave"></div>
-                                <div class="wave"></div>
-                                <div class="ripple"></div>
-                                <div class="ripple"></div>
-                            </div>
-                        </div>
+                        <img src="https://lh3.googleusercontent.com/d/1BJzOk1IAZqylrgSOiN1A7h7jkfA01yF6=w1000" alt="Капитан Дмитрий"> 
                     </div>
                     <div class="captain-info">
                         <h3>Капитан Дмитрий</h3>
@@ -766,20 +598,9 @@
                     </div>
                 </div>
                 
-                <!-- Третий блок: фото катера слева с волнами, текст справа -->
                 <div class="boat-section">
                     <div class="boat-image">
-                        <div class="image-with-waves">
-                            <img src="https://lh3.googleusercontent.com/d/1bguNb0Z5FF_cP9VnB1nDYjCF5psojT5j" alt="Катер Печенюга">
-                            <!-- Волны под фотографией катера -->
-                            <div class="wave-container">
-                                <div class="wave"></div>
-                                <div class="wave"></div>
-                                <div class="wave"></div>
-                                <div class="ripple"></div>
-                                <div class="ripple"></div>
-                            </div>
-                        </div>
+                        <img src="https://lh3.googleusercontent.com/d/1bguNb0Z5FF_cP9VnB1nDYjCF5psojT5j" alt="Катер Печенюга">
                     </div>
                     <div class="boat-info">
                         <h3>Катер "Печенюга"</h3>
@@ -796,7 +617,6 @@
                     </div>
                 </div>
                 
-                <!-- Блок с преимуществами -->
                 <div class="features">
                     <div class="feature">
                         <i class="fas fa-anchor"></i>
